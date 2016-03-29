@@ -10,16 +10,20 @@ const Styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20,
+    paddingTop: 20
   },
 
   button: {
-      backgroundColor: '#55FCFF',
-      margin: 16,
-      padding: 12,
-      paddingLeft: 20,
-      paddingRight: 20,
-      fontSize: 18,
+    backgroundColor: '#55FCFF',
+    margin: 16,
+    padding: 12,
+    paddingLeft: 20,
+    paddingRight: 20,
+    fontSize: 18
+  },
+
+  phone: {
+    paddingLeft: 20
   },
 
   logo: {
@@ -28,28 +32,43 @@ const Styles = StyleSheet.create({
   },
 
   usernameInput: {
-      height: 40,
-      borderColor: 'gray',
-      borderWidth: 2,
-      margin: 10,
-      padding: 5
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 2,
+    margin: 10,
+    padding: 5
   },
 
   passwordInput: {
-      borderWidth: 2,
-      borderColor: 'gray',
-      height: 40,
-      margin: 10,
-      padding: 5
+    borderWidth: 2,
+    borderColor: 'gray',
+    height: 40,
+    margin: 10,
+    padding: 5
+  },
+
+  projectListContainer: {
+    flex: 1,
+    paddingTop: 20
   },
 
   projectListItem: {
-    flex: 0,
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: 'column',
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
     borderBottomWidth: 1
+  },
+
+  projectListItemUpper: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+
+  projectListItemLower: {
+    flex: 1,
+    flexDirection: 'row'
   }
 });
 

@@ -1,3 +1,4 @@
+const _     = require('lodash');
 const React = require('react-native');
 const {
   AppRegistry,
@@ -8,23 +9,25 @@ const {
   TouchableHighlight
 } = React;
 
+const Icon   = require('react-native-vector-icons/FontAwesome');
 const Styles = require('../../Styles');
+
 
 let dummyProjects = [
   {
     name: "Batman Returns",
-    actors: "30",
-    availability: "20"
+    director: "Brad Richardson",
+    roles: ["Batman", "Robin", "Joker"]
   },
   {
     name: "Forrest Gump",
-    actors: "30",
-    availability: "20"
+    director: "Natalie Low",
+    roles: ["Forrest", "Jenny", "Mom"]
   },
   {
     name: "Brian the Great",
-    actors: "30",
-    availability: "20"
+    director: "Bill Gates",
+    roles: ["Brian", "Susan", "Trevar"]
   }
 ]
 
@@ -38,17 +41,26 @@ const ProjectListView = React.createClass({
 
   render: function () {
     return (
-      <View style = { Styles.centeredContainer }>
+      <View style = { Styles.projectListContainer }>
         <ListView
           dataSource = { this.state.dataSource }
           renderRow  = { (project) =>
-            <TouchableHighlight onPress={() => this.onProjectSelected(project) }>
-              <View style = { Styles.projectListItem }>
+            <View style = { Styles.projectListItem }>
+              <View style = { Styles.projectListItemUpper }>
                 <Text>
-                  {project.name} - { project.actors } - { project.availability }
+                  { project.name } - { project.director }
                 </Text>
+                <Icon style = { Styles.phone } size = { 30 } name = "phone" />
               </View>
-            </TouchableHighlight>
+              <View style = { Styles.projectListItemLower }>
+                { _.map(project.roles, (role, index) => {
+                  if (index == project.roles.length-1)
+                    return <Text key={ index }>{ role }</Text>
+                  else
+                    return <Text key={ index }>{ role }, </Text>
+                }) }
+              </View>
+            </View>
            }
         />
       </View>

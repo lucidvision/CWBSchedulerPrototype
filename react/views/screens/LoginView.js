@@ -52,13 +52,6 @@ const LoginView = React.createClass({
         console.log("onRightButtonPressed");
         main.navTo("Settings");
       }
-    },
-    {
-      title: "Back",
-      onPress: function() {
-        console.log("onLeftButtonPressed");
-        main.navTo("Login");
-      }
     });
   }
 });
