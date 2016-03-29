@@ -22,12 +22,17 @@ const Styles = StyleSheet.create({
       fontSize: 18,
   },
 
+  logo: {
+    width: 100,
+    height: 100
+  },
+
   usernameInput: {
       height: 40,
       borderColor: 'gray',
       borderWidth: 2,
       margin: 10,
-      padding: 5,
+      padding: 5
   },
 
   passwordInput: {
@@ -35,7 +40,16 @@ const Styles = StyleSheet.create({
       borderColor: 'gray',
       height: 40,
       margin: 10,
-      padding: 5,
+      padding: 5
+  },
+
+  projectListItem: {
+    flex: 0,
+    flexDirection: 'row',
+    padding: 10,
+    borderColor: 'gray',
+    borderTopWidth: 0,
+    borderBottomWidth: 1
   }
 });
 

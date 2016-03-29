@@ -22,6 +22,9 @@ const LoginView = React.createClass({
   render: function () {
     return (
       <View style={ Styles.centeredContainer }>
+        <Image
+          source = { require('../../../assets/images/CWB_logo.png') }
+          style  = { Styles.logo } />
         <TextInput
           style        = { Styles.usernameInput }
           value        = { this.state.username }
@@ -32,7 +35,7 @@ const LoginView = React.createClass({
           onChangeText = { (password) => this.setState({ password }) } />
         <TouchableHighlight onPress = { () => this.onLoginPressed() }>
           <Text style = { Styles.button }>
-            Forgot Password
+            Go!
           </Text>
         </TouchableHighlight>
       </View>
@@ -41,5 +44,23 @@ const LoginView = React.createClass({
 
   onLoginPressed: async function() {
     console.log("login pressed");
+
+    let main = this.props.main;
+    main.navTo("ProjectList", "", {
+      title: "Settings",
+      onPress: function() {
+        console.log("onRightButtonPressed");
+        main.navTo("Settings");
+      }
+    },
+    {
+      title: "Back",
+      onPress: function() {
+        console.log("onLeftButtonPressed");
+        main.navTo("Login");
+      }
+    });
   }
 });
+
+module.exports = LoginView;
