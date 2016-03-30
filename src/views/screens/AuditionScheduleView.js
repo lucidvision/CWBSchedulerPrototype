@@ -1,5 +1,4 @@
-const _     = require('lodash');
-const React = require('react-native');
+const React  = require('react-native');
 const Icon   = require('react-native-vector-icons/FontAwesome');
 const Styles = require('../../assets/Styles');
 const {
@@ -35,9 +34,9 @@ const dummyAuditions = [
   }
 ]
 
-const ProjectDetailView = React.createClass({
+const AuditionScheduleView = React.createClass({
   getInitialState: function () {
-    var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2});
     return {
       dataSource: ds.cloneWithRows(dummyAuditions)
     };
@@ -45,13 +44,16 @@ const ProjectDetailView = React.createClass({
 
   render: function () {
     return (
-      <View style = { Styles.auditionContainer }>
+      <View style = { Styles.screenContainer }>
         <ListView
           dataSource = { this.state.dataSource }
           renderRow  = { (audition) =>
             <View style = { Styles.auditionItem }>
               <Text>
                 { audition.actor }
+              </Text>
+              <Text>
+                { audition.role }
               </Text>
               <Text>
                 { audition.date }
@@ -66,4 +68,4 @@ const ProjectDetailView = React.createClass({
   }
 });
 
-module.exports = ProjectDetailView;
+module.exports = AuditionScheduleView;

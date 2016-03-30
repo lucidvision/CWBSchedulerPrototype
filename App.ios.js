@@ -10,20 +10,18 @@ const {
   NavigatorIOS
 } = React;
 
-const ActorScheduleView   = require('./src/views/screens/ActorScheduleView');
+const AuditionScheduleView   = require('./src/views/screens/AuditionScheduleView');
 const LoginView           = require('./src/views/screens/LoginView');
-const ProjectDetailView   = require('./src/views/screens/ProjectDetailView');
+const ProjectScheduleView   = require('./src/views/screens/ProjectScheduleView');
 const ProjectListView     = require('./src/views/screens/ProjectListView');
-const ProjectScheduleView = require('./src/views/screens/ProjectScheduleView');
 const SettingsView        = require('./src/views/screens/SettingsView');
 
 const Styles = require('./src/assets/Styles');
 
 const App = React.createClass({
   routingTable: {
-    'ActorSchedule': { title: "Actor Schedule", component: ActorScheduleView },
+    'ActorSchedule': { title: "Actor Schedule", component: AuditionScheduleView },
     'Login': { title: "Login", component: LoginView },
-    'ProjectDetail': { title: "Project Detail", component: ProjectDetailView },
     'ProjectList': { title: "Projects", component: ProjectListView },
     'ProjectSchedule': { title: "Project Schedule", component: ProjectScheduleView },
     'Settings': { title: "Settings", component: SettingsView }

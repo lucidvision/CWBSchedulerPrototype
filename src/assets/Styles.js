@@ -3,13 +3,18 @@ const { StyleSheet } = React;
 
 const Styles = StyleSheet.create({
   navigationContainer: {
-      flex: 1,
+    flex: 1
   },
 
   centeredContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop: 20
+  },
+
+  screenContainer: {
+    flex: 1,
     paddingTop: 20
   },
 
@@ -47,11 +52,6 @@ const Styles = StyleSheet.create({
     padding: 5
   },
 
-  projectListContainer: {
-    flex: 1,
-    paddingTop: 20
-  },
-
   projectListItem: {
     flex: 1,
     flexDirection: 'row',
@@ -62,12 +62,12 @@ const Styles = StyleSheet.create({
   },
 
   projectListItemLeft: {
-    flex: 0.65,
+    flex: 0.6,
     flexDirection: 'column'
   },
 
   projectListItemRight: {
-    flex: 0.35,
+    flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center'
@@ -79,22 +79,48 @@ const Styles = StyleSheet.create({
   },
 
   projectListFont: {
-    fontSize: 20
+    fontSize: 15
   },
 
-  auditionContainer: {
-    flex: 1,
-    paddingTop: 20
+  activeActions: {
+    backgroundColor: '#55FCFF',
+    borderStyle: 'solid',
+    padding: 10,
+    borderRadius: 10
+  },
+
+  inactiveActions: {
+    backgroundColor: 'white',
+    borderStyle: 'solid',
+    padding: 10,
+    borderRadius: 10
   },
 
   auditionItem: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
     borderBottomWidth: 1,
     justifyContent: 'space-between'
+  },
+
+  auditionItemTop: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+
+  auditionItemLeft: {
+    flex: 0.6,
+    flexDirection: 'column'
+  },
+
+  auditionItemRight: {
+    flex: 0.4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'center'
   }
 });
 

@@ -42,7 +42,7 @@ const ProjectListView = React.createClass({
 
   render: function () {
     return (
-      <View style = { Styles.projectListContainer }>
+      <View style = { Styles.screenContainer }>
         <ListView
           dataSource = { this.state.dataSource }
           renderRow  = { (project) =>
@@ -62,14 +62,13 @@ const ProjectListView = React.createClass({
               </View>
               <View style = { Styles.projectListItemRight }>
                 <Icon name = "phone" style = { Styles.phone } size = { 30 } />
-                <Text>
-                  19
-                </Text>
+                <View style = { project.actions > 0 ? Styles.activeActions : Styles.inactiveActions }>
+                  <Text>{ project.actions }</Text>
+                </View>
                 <TouchableHighlight onPress = { this.onProjectSelected }>
                   <Icon
-                    name      = "chevron-circle-right"
-                    style     = { Styles.chevron }
-                    size      = { 30 } />
+                    name  = "chevron-circle-right"
+                    size  = { 30 } />
                 </TouchableHighlight>
               </View>
             </View>
@@ -81,7 +80,7 @@ const ProjectListView = React.createClass({
   onProjectSelected: async function(event) {
     console.log("onProjectSelected");
 
-    this.props.main.navTo("ProjectDetail");
+    this.props.main.navTo("ProjectSchedule");
   }
 });
 
