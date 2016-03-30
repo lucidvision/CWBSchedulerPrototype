@@ -10,14 +10,14 @@ const {
   NavigatorIOS
 } = React;
 
-const ActorScheduleView   = require('./react/views/screens/ActorScheduleView');
-const LoginView           = require('./react/views/screens/LoginView');
-const ProjectDetailView   = require('./react/views/screens/ProjectDetailView');
-const ProjectListView     = require('./react/views/screens/ProjectListView');
-const ProjectScheduleView = require('./react/views/screens/ProjectScheduleView');
-const SettingsView        = require('./react/views/screens/SettingsView');
+const ActorScheduleView   = require('./src/views/screens/ActorScheduleView');
+const LoginView           = require('./src/views/screens/LoginView');
+const ProjectDetailView   = require('./src/views/screens/ProjectDetailView');
+const ProjectListView     = require('./src/views/screens/ProjectListView');
+const ProjectScheduleView = require('./src/views/screens/ProjectScheduleView');
+const SettingsView        = require('./src/views/screens/SettingsView');
 
-const Styles = require('./react/Styles');
+const Styles = require('./src/assets/Styles');
 
 const App = React.createClass({
   routingTable: {

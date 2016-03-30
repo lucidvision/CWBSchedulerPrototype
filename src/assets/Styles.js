@@ -54,21 +54,47 @@ const Styles = StyleSheet.create({
 
   projectListItem: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
     borderBottomWidth: 1
   },
 
-  projectListItemUpper: {
+  projectListItemLeft: {
+    flex: 0.65,
+    flexDirection: 'column'
+  },
+
+  projectListItemRight: {
+    flex: 0.35,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'center'
+  },
+
+  projectListItemRoles: {
     flex: 1,
     flexDirection: 'row'
   },
 
-  projectListItemLower: {
+  projectListFont: {
+    fontSize: 20
+  },
+
+  auditionContainer: {
     flex: 1,
-    flexDirection: 'row'
+    paddingTop: 20
+  },
+
+  auditionItem: {
+    flex: 1,
+    flexDirection: 'row',
+    padding: 10,
+    borderColor: 'gray',
+    borderTopWidth: 0,
+    borderBottomWidth: 1,
+    justifyContent: 'space-between'
   }
 });
 

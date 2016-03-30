@@ -9,7 +9,7 @@ const {
   TouchableHighlight
 } = React;
 
-const Styles = require('../../Styles');
+const Styles = require('../../assets/Styles');
 
 const LoginView = React.createClass({
   getInitialState: function() {
@@ -23,7 +23,7 @@ const LoginView = React.createClass({
     return (
       <View style={ Styles.centeredContainer }>
         <Image
-          source = { require('../../../assets/images/CWB_logo.png') }
+          source = { require('../../../src/assets/images/CWB_logo.png') }
           style  = { Styles.logo } />
         <TextInput
           style        = { Styles.usernameInput }
@@ -42,11 +42,11 @@ const LoginView = React.createClass({
     );
   },
 
-  onLoginPressed: async function() {
+  onLoginPressed: async function(event) {
     console.log("login pressed");
 
     let main = this.props.main;
-    main.navTo("ProjectList", "", {
+    main.navTo("ProjectList", {}, {
       title: "Settings",
       onPress: function() {
         console.log("onRightButtonPressed");

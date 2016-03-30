@@ -9,7 +9,7 @@ const {
   TouchableHighlight
 } = React;
 
-const Styles = require('../../Styles');
+const Styles = require('../../assets/Styles');
 
 const SettingsView = React.createClass({
   render: function () {
