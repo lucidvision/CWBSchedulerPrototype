@@ -54,9 +54,9 @@ const ProjectListView = React.createClass({
                 <View style = { Styles.projectListItemRoles }>
                   { _.map(project.roles, (role, index) => {
                     if (index == project.roles.length-1)
-                      return <Text key={ index } style = { Styles.projectListFont }>{ role }</Text>
+                      return <Text key = { index } style = { Styles.projectListFont }>{ role }</Text>
                     else
-                      return <Text key={ index } style = { Styles.projectListFont }>{ role }, </Text>
+                      return <Text key = { index } style = { Styles.projectListFont }>{ role }, </Text>
                   }) }
                 </View>
               </View>
@@ -66,9 +66,7 @@ const ProjectListView = React.createClass({
                   <Text>{ project.actions }</Text>
                 </View>
                 <TouchableHighlight onPress = { this.onProjectSelected }>
-                  <Icon
-                    name  = "chevron-circle-right"
-                    size  = { 30 } />
+                  <Icon name = "chevron-circle-right" size = { 30 } />
                 </TouchableHighlight>
               </View>
             </View>

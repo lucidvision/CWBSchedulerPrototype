@@ -112,16 +112,38 @@ const Styles = StyleSheet.create({
   },
 
   auditionItemLeft: {
-    flex: 0.6,
+    flex: 0.4,
     flexDirection: 'column'
   },
 
   auditionItemRight: {
-    flex: 0.4,
+    flex: 0.6,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center'
-  }
+  },
+
+  auditionItemExpand: {
+    margin: 20
+  },
+
+  auditionItemCollapse: {
+    opacity: 0
+  },
+
+  yesResponse: {
+    backgroundColor: '#00CC33',
+    borderStyle: 'solid',
+    padding: 10,
+    borderRadius: 10
+  },
+
+  noResponse: {
+    backgroundColor: '#FF0000',
+    borderStyle: 'solid',
+    padding: 10,
+    borderRadius: 10
+  },
 });
 
 module.exports = Styles;
