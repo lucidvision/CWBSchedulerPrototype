@@ -14,8 +14,21 @@ const Styles = StyleSheet.create({
   },
 
   screenContainer: {
+    flex: 1
+  },
+
+  headerContainer: {
     flex: 1,
-    paddingTop: 20
+    flexDirection: 'row',
+    backgroundColor: '#F6F6F6',
+    justifyContent: 'space-between',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#CCCCCC',
+  },
+
+  header: {
+    fontSize: 25
   },
 
   button: {
@@ -27,10 +40,6 @@ const Styles = StyleSheet.create({
     fontSize: 18
   },
 
-  actionSheet: {
-
-  },
-
   phone: {
     paddingLeft: 20
   },
@@ -38,6 +47,11 @@ const Styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100
+  },
+
+  separator: {
+    height: 1,
+    backgroundColor: '#CCCCCC',
   },
 
   usernameInput: {
@@ -61,9 +75,7 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     padding: 10,
-    borderColor: 'gray',
-    borderTopWidth: 0,
-    borderBottomWidth: 1
+    backgroundColor: '#F6F6F6',
   },
 
   projectListItemLeft: {
@@ -106,9 +118,7 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     height: 100,
     padding: 10,
-    borderColor: 'gray',
-    borderTopWidth: 0,
-    borderBottomWidth: 1,
+    backgroundColor: '#F6F6F6',
     justifyContent: 'space-between'
   },
 

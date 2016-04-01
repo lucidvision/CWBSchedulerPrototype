@@ -62,7 +62,7 @@ const ProjectScheduleView = React.createClass({
       dataSource: ds.cloneWithRows(dummyAuditions),
       auditions: dummyAuditions,
       status: "",
-      clicked: 'none',
+      clicked: 'none'
     };
   },
 
@@ -70,35 +70,58 @@ const ProjectScheduleView = React.createClass({
     return (
       <View style = { Styles.screenContainer }>
         <ListView
-          dataSource = { this.state.dataSource }
-          renderRow  = { (audition) =>
-            <View style = { audition.selected ? Styles.auditionItemSelected : Styles.auditionItem }>
-              <View style = { Styles.auditionItemLeft }>
-                <TouchableHighlight onPress = { () => this.onItemSelected(audition.id) }>
-                  <View style = { Styles.auditionItemSelect }>
-                    <Text>
-                      { audition.actor } - { audition.role }
-                    </Text>
-                    <Text>
-                      { audition.date } - { audition.time }
-                    </Text>
-                  </View>
-                </TouchableHighlight>
-              </View>
-              <View style = { Styles.auditionItemRight }>
-                <Icon name = "phone" size = { 30 } />
-                <Icon name = "file-text-o" size = { 30 } />
-                <View style ={ audition.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
-                  <Text>{ audition.status }</Text>
-                </View>
-              </View>
-            </View>
-          } />
+          dataSource      = { this.state.dataSource }
+          renderHeader    = { this._renderHeader }
+          renderRow       = { this._renderRow }
+          renderSeparator = { this._renderSeperator } />
         <Text onPress = { this.showActionSheet } style = { Styles.button }>
           Actions
         </Text>
       </View>
     );
+  },
+
+  _renderHeader: function() {
+    return (
+      <View style = { Styles.headerContainer }>
+        <Text style = { Styles.header }>
+          Michael Bay
+        </Text>
+        <Icon name = "phone" size = { 30 } />
+      </View>
+    )
+  },
+
+  _renderRow: function(audition) {
+    return (
+      <View style = { audition.selected ? Styles.auditionItemSelected : Styles.auditionItem }>
+        <View style = { Styles.auditionItemLeft }>
+          <TouchableHighlight onPress = { () => this.onItemSelected(audition.id) }>
+            <View style = { Styles.auditionItemSelect }>
+              <Text>
+                { audition.actor } - { audition.role }
+              </Text>
+              <Text>
+                { audition.date } - { audition.time }
+              </Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+        <View style = { Styles.auditionItemRight }>
+          <Icon name = "phone" size = { 30 } />
+          <Icon name = "file-text-o" size = { 30 } />
+          <View style ={ audition.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
+            <Text>{ audition.status }</Text>
+          </View>
+        </View>
+      </View>
+    );
+  },
+
+  _renderSeperator: function(sectionID, rowID) {
+    return (
+      <View key = { `${sectionID}-${rowID}` } style = { Styles.separator } />
+    )
   },
 
   onItemSelected: function(id) {
@@ -110,7 +133,7 @@ const ProjectScheduleView = React.createClass({
       } else if (audition.id == id && audition.selected == true) {
         audition.selected = false;
       }
-      
+
       return audition;
     });
 
@@ -128,7 +151,7 @@ const ProjectScheduleView = React.createClass({
     (buttonIndex) => {
       this.setState({ clicked: BUTTONS[buttonIndex] });
     });
-  }
+  },
 });
 
 module.exports = ProjectScheduleView;

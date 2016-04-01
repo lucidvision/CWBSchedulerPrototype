@@ -40,46 +40,57 @@ const ProjectListView = React.createClass({
     };
   },
 
-  onProjectSelected: async function(event) {
-    console.log("onProjectSelected");
-
-    this.props.main.navTo("ProjectSchedule");
-  },
-
   render: function () {
     return (
       <View style = { Styles.screenContainer }>
         <ListView
           dataSource = { this.state.dataSource }
-          renderRow  = { (project) =>
-            <View style = { Styles.projectListItem }>
-              <View style = { Styles.projectListItemLeft }>
-                <Text style = { Styles.projectListFont }>
-                  { project.name } - { project.director }
-                </Text>
-                <View style = { Styles.projectListItemRoles }>
-                  { _.map(project.roles, (role, index) => {
-                    if (index == project.roles.length-1)
-                      return <Text key = { index } style = { Styles.projectListFont }>{ role }</Text>
-                    else
-                      return <Text key = { index } style = { Styles.projectListFont }>{ role }, </Text>
-                  }) }
-                </View>
-              </View>
-              <View style = { Styles.projectListItemRight }>
-                <Icon name = "phone" style = { Styles.phone } size = { 30 } />
-                <View style = { project.actions > 0 ? Styles.activeActions : Styles.inactiveActions }>
-                  <Text>{ project.actions }</Text>
-                </View>
-                <TouchableHighlight onPress = { this.onProjectSelected }>
-                  <Icon name = "chevron-circle-right" size = { 30 } />
-                </TouchableHighlight>
-              </View>
-            </View>
-          } />
+          renderRow  = { this._renderRow }
+          renderSeparator = { this._renderSeperator } />
       </View>
     );
-  }
+  },
+
+  _renderRow: function (project) {
+    return (
+      <View style = { Styles.projectListItem }>
+        <View style = { Styles.projectListItemLeft }>
+          <Text style = { Styles.projectListFont }>
+            { project.name } - { project.director }
+          </Text>
+          <View style = { Styles.projectListItemRoles }>
+            { _.map(project.roles, (role, index) => {
+              if (index == project.roles.length-1)
+                return <Text key = { index } style = { Styles.projectListFont }>{ role }</Text>
+              else
+                return <Text key = { index } style = { Styles.projectListFont }>{ role }, </Text>
+            }) }
+          </View>
+        </View>
+        <View style = { Styles.projectListItemRight }>
+          <Icon name = "phone" style = { Styles.phone } size = { 30 } />
+          <View style = { project.actions > 0 ? Styles.activeActions : Styles.inactiveActions }>
+            <Text>{ project.actions }</Text>
+          </View>
+          <TouchableHighlight onPress = { this.onProjectSelected }>
+            <Icon name = "chevron-circle-right" size = { 30 } />
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
+  },
+
+  _renderSeperator: function(sectionID, rowID) {
+    return (
+      <View key = { `${sectionID}-${rowID}` } style = { Styles.separator } />
+    )
+  },
+
+  onProjectSelected: async function (event) {
+    console.log("onProjectSelected");
+
+    this.props.main.navTo("ProjectSchedule");
+  },
 });
 
 module.exports = ProjectListView;
