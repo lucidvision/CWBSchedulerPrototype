@@ -8,7 +8,9 @@ const {
   ListView,
   Text,
   View,
-  TouchableHighlight
+  UIManager,
+  ActionSheetIOS,
+  TouchableHighlight,
 } = React;
 
 const dummyAuditions = [
@@ -18,7 +20,6 @@ const dummyAuditions = [
     role: "Batman",
     date: "02/20/16",
     time: "3:30p",
-    action: "C",
     status: "Yes",
     selected: false
   },
@@ -28,7 +29,6 @@ const dummyAuditions = [
     role: "Batman",
     date: "02/20/16",
     time: "3:50p",
-    action: "C",
     status: "No",
     selected: false
   },
@@ -38,11 +38,21 @@ const dummyAuditions = [
     role: "Batman",
     date: "02/20/16",
     time: "4:10p",
-    action: "C",
     status: "Yes",
     selected: false
   }
-]
+];
+
+var BUTTONS = [
+  'Forward to actor',
+  'Forward to casting',
+  'Set status to "Yes"',
+  'Set status to "No"',
+  'Set status to "Wait"',
+  'Cancel'
+];
+
+var CANCEL_INDEX = 5;
 
 const ProjectScheduleView = React.createClass({
   getInitialState: function () {
@@ -50,28 +60,10 @@ const ProjectScheduleView = React.createClass({
 
     return {
       dataSource: ds.cloneWithRows(dummyAuditions),
-      auditions: dummyAuditions
+      auditions: dummyAuditions,
+      status: "",
+      clicked: 'none',
     };
-  },
-
-  onItemSelected: function(id) {
-    console.log("onItemSelected");
-
-    const auditions = _.map(_.cloneDeep(this.state.auditions), (audition) => {
-      if (audition.id == id && audition.selected == false) {
-        audition.selected = true;
-      } else {
-        audition.selected = false;
-      }
-      return audition;
-    });
-
-    console.log(auditions);
-
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(auditions),
-      auditions: auditions
-    });
   },
 
   render: function () {
@@ -102,8 +94,40 @@ const ProjectScheduleView = React.createClass({
               </View>
             </View>
           } />
+        <Text onPress = { this.showActionSheet } style = { Styles.button }>
+          Actions
+        </Text>
       </View>
     );
+  },
+
+  onItemSelected: function(id) {
+    console.log("onItemSelected");
+
+    const auditions = _.map(_.cloneDeep(this.state.auditions), (audition) => {
+      if (audition.id == id && audition.selected == false) {
+        audition.selected = true;
+      } else if (audition.id == id && audition.selected == true) {
+        audition.selected = false;
+      }
+      
+      return audition;
+    });
+
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(auditions),
+      auditions: auditions
+    });
+  },
+
+  showActionSheet() {
+    ActionSheetIOS.showActionSheetWithOptions({
+      options: BUTTONS,
+      cancelButtonIndex: CANCEL_INDEX,
+    },
+    (buttonIndex) => {
+      this.setState({ clicked: BUTTONS[buttonIndex] });
+    });
   }
 });
 

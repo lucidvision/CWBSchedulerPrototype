@@ -27,6 +27,10 @@ const Styles = StyleSheet.create({
     fontSize: 18
   },
 
+  actionSheet: {
+
+  },
+
   phone: {
     paddingLeft: 20
   },
@@ -55,6 +59,7 @@ const Styles = StyleSheet.create({
   projectListItem: {
     flex: 1,
     flexDirection: 'row',
+    height: 100,
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
@@ -70,7 +75,7 @@ const Styles = StyleSheet.create({
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignSelf: 'center'
+    height: 35
   },
 
   projectListItemRoles: {
@@ -99,6 +104,7 @@ const Styles = StyleSheet.create({
   auditionItem: {
     flex: 1,
     flexDirection: 'row',
+    height: 100,
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
@@ -109,6 +115,7 @@ const Styles = StyleSheet.create({
   auditionItemSelected: {
     flex: 1,
     flexDirection: 'row',
+    height: 100,
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
@@ -126,7 +133,7 @@ const Styles = StyleSheet.create({
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignSelf: 'center'
+    height: 35
   },
 
   auditionItemSelect: {
@@ -145,10 +152,10 @@ const Styles = StyleSheet.create({
   noResponse: {
     backgroundColor: '#FF0000',
     borderStyle: 'solid',
-    padding: 10,
     borderRadius: 10,
+    padding: 10,
     width: 60,
-    alignItems: 'center',
+    alignItems: 'center'
   },
 });
 
