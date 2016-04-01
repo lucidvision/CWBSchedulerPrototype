@@ -40,6 +40,12 @@ const ProjectListView = React.createClass({
     };
   },
 
+  onProjectSelected: async function(event) {
+    console.log("onProjectSelected");
+
+    this.props.main.navTo("ProjectSchedule");
+  },
+
   render: function () {
     return (
       <View style = { Styles.screenContainer }>
@@ -73,12 +79,6 @@ const ProjectListView = React.createClass({
           } />
       </View>
     );
-  },
-
-  onProjectSelected: async function(event) {
-    console.log("onProjectSelected");
-
-    this.props.main.navTo("ProjectSchedule");
   }
 });
 

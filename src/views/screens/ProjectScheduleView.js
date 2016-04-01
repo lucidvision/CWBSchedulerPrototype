@@ -2,15 +2,13 @@ const _                = require('lodash');
 const React            = require('react-native');
 const Icon             = require('react-native-vector-icons/FontAwesome');
 const Styles           = require('../../assets/Styles');
-const { SegmentedControls } = require('react-native-radio-buttons');
 const {
   AppRegistry,
   StyleSheet,
   ListView,
   Text,
   View,
-  TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableHighlight
 } = React;
 
 const dummyAuditions = [
@@ -21,7 +19,8 @@ const dummyAuditions = [
     date: "02/20/16",
     time: "3:30p",
     action: "C",
-    status: "Yes"
+    status: "Yes",
+    selected: false
   },
   {
     id: 2,
@@ -30,7 +29,8 @@ const dummyAuditions = [
     date: "02/20/16",
     time: "3:50p",
     action: "C",
-    status: "No"
+    status: "No",
+    selected: false
   },
   {
     id: 3,
@@ -39,7 +39,8 @@ const dummyAuditions = [
     date: "02/20/16",
     time: "4:10p",
     action: "C",
-    status: "Yes"
+    status: "Yes",
+    selected: false
   }
 ]
 
@@ -49,66 +50,55 @@ const ProjectScheduleView = React.createClass({
 
     return {
       dataSource: ds.cloneWithRows(dummyAuditions),
-      auditions: dummyAuditions,
-      isVisible: false,
+      auditions: dummyAuditions
     };
   },
 
-  onExpandSelected: function(id) {
-    const auditions = _.map(_.cloneDeep(dummyAuditions), (audition) => {
-      if (audition.id == id) {
-        audition.expand = "true";
-        return audition;
+  onItemSelected: function(id) {
+    console.log("onItemSelected");
+
+    const auditions = _.map(_.cloneDeep(this.state.auditions), (audition) => {
+      if (audition.id == id && audition.selected == false) {
+        audition.selected = true;
+      } else {
+        audition.selected = false;
       }
       return audition;
     });
 
     console.log(auditions);
-    this.setState({ dataSource: this.state.dataSource.cloneWithRows(auditions) });
+
+    this.setState({
+      dataSource: this.state.dataSource.cloneWithRows(auditions),
+      auditions: auditions
+    });
   },
 
   render: function () {
-    const options = [
-      "Confirm",
-      "Regret",
-      "?"
-    ];
-
-    function setSelectedOption(selectedOption){
-      this.setState({ selectedOption });
-    }
-
     return (
       <View style = { Styles.screenContainer }>
         <ListView
           dataSource = { this.state.dataSource }
           renderRow  = { (audition) =>
-            <View style = { Styles.auditionItem }>
-              <View style = { Styles.auditionItemTop }>
-                <View style = { Styles.auditionItemLeft }>
-                  <Text>
-                    { audition.date } - { audition.time }
-                  </Text>
-                  <Text>
-                    { audition.actor } - { audition.role }
-                  </Text>
-                </View>
-                <View style = { Styles.auditionItemRight }>
-                  <Icon name = "phone" style = { Styles.phone } size = { 30 } />
-                  <Icon name = "file-text-o" size = { 30 } />
-                  <View style ={ audition.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
-                    <Text>Status: { audition.status }</Text>
+            <View style = { audition.selected ? Styles.auditionItemSelected : Styles.auditionItem }>
+              <View style = { Styles.auditionItemLeft }>
+                <TouchableHighlight onPress = { () => this.onItemSelected(audition.id) }>
+                  <View style = { Styles.auditionItemSelect }>
+                    <Text>
+                      { audition.actor } - { audition.role }
+                    </Text>
+                    <Text>
+                      { audition.date } - { audition.time }
+                    </Text>
                   </View>
-                  <TouchableHighlight onPress = {() => this.onExpandSelected(audition.id) }>
-                    <Icon name = "caret-down" size = { 30 } />
-                  </TouchableHighlight>
-                </View>
+                </TouchableHighlight>
               </View>
-              <View style={ audition.expand == "true" ? Styles.auditionItemExpand : Styles.auditionItemCollapse }>
-                <SegmentedControls
-                  options        = { options }
-                  onSelection    = { setSelectedOption.bind(this) }
-                  selectedOption = { this.state.selectedOption } />
+              <View style = { Styles.auditionItemRight }>
+                <Icon name = "phone" size = { 30 } />
+                <Icon name = "file-text-o" size = { 30 } />
+                <View style ={ audition.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
+                  <Text>{ audition.status }</Text>
+                </View>
               </View>
             </View>
           } />

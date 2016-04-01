@@ -98,7 +98,7 @@ const Styles = StyleSheet.create({
 
   auditionItem: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: 'row',
     padding: 10,
     borderColor: 'gray',
     borderTopWidth: 0,
@@ -106,43 +106,49 @@ const Styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
 
-  auditionItemTop: {
+  auditionItemSelected: {
     flex: 1,
     flexDirection: 'row',
+    padding: 10,
+    borderColor: 'gray',
+    borderTopWidth: 0,
+    borderBottomWidth: 1,
+    justifyContent: 'space-between',
+    backgroundColor: '#00FFFF'
   },
 
   auditionItemLeft: {
-    flex: 0.4,
+    flex: 0.6,
     flexDirection: 'column'
   },
 
   auditionItemRight: {
-    flex: 0.6,
+    flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center'
   },
 
-  auditionItemExpand: {
-    margin: 20
-  },
-
-  auditionItemCollapse: {
-    opacity: 0
+  auditionItemSelect: {
+    flex: 1
   },
 
   yesResponse: {
     backgroundColor: '#00CC33',
     borderStyle: 'solid',
+    borderRadius: 10,
     padding: 10,
-    borderRadius: 10
+    width: 60,
+    alignItems: 'center'
   },
 
   noResponse: {
     backgroundColor: '#FF0000',
     borderStyle: 'solid',
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    width: 60,
+    alignItems: 'center',
   },
 });
 
