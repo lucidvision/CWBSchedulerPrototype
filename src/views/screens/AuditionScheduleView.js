@@ -12,21 +12,21 @@ const {
 
 const dummyAuditions = [
   {
-    actor: "Brad Pitt",
+    agent: "Trisha Agentface",
     role: "Batman",
     date: "02/20/16",
     time: "3:30p",
     action: "C"
   },
   {
-    actor: "Christian Bale",
+    agent: "Trisha Agentface",
     role: "Batman",
     date: "02/20/16",
     time: "3:50p",
     action: "C"
   },
   {
-    actor: "Ben Affleck",
+    agent: "Trisha Agentface",
     role: "Batman",
     date: "02/20/16",
     time: "4:10p",
@@ -46,25 +46,47 @@ const AuditionScheduleView = React.createClass({
     return (
       <View style = { Styles.screenContainer }>
         <ListView
-          dataSource = { this.state.dataSource }
-          renderRow  = { (audition) =>
-            <View style = { Styles.auditionItem }>
-              <Text>
-                { audition.actor }
-              </Text>
-              <Text>
-                { audition.role }
-              </Text>
-              <Text>
-                { audition.date }
-              </Text>
-              <Text>
-                { audition.time }
-              </Text>
-            </View>
-          } />
+          dataSource      = { this.state.dataSource }
+          renderRow       = { this._renderRow }
+          renderSeparator = { this._renderSeperator } />
       </View>
     );
+  },
+
+  _renderHeader: function () {
+    return (
+      <View style = { Styles.headerContainer }>
+        <Text style = { Styles.header }>Trisha Agentface</Text>
+        <Icon name = "phone" size = { 30 } />
+      </View>
+    );
+  },
+
+  _renderRow: function (audition) {
+    return (
+      <View style = { Styles.auditionItem }>
+        <View style = { Styles.auditionItemTop }>
+          <View style = { Styles.auditionItemLeft }>
+            <Text>{ audition.role } - { audition.agent }</Text>
+            <Text>{ audition.date } - { audition.time }</Text>
+          </View>
+          <View style = { Styles.auditionItemRight }>
+            <Icon name = "phone" size = { 30 } />
+            <Icon name = "file-text-o" size = { 30 } />
+          </View>
+        </View>
+        <View style = { Styles.auditionItemBottom }>
+          <Text style = { Styles.button }>Yes</Text>
+          <Text style = { Styles.button }>No</Text>
+        </View>
+      </View>
+    );
+  },
+
+  _renderSeperator: function (sectionID, rowID) {
+   return (
+     <View key = { `${sectionID}-${rowID}` } style = { Styles.separator } />
+   );
   }
 });
 

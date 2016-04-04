@@ -13,7 +13,7 @@ const {
   TouchableHighlight,
 } = React;
 
-const dummyAuditions = [
+const dummysubmissions = [
   {
     id: 1,
     actor: "Brad Pitt",
@@ -59,8 +59,8 @@ const ProjectScheduleView = React.createClass({
     var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
     return {
-      dataSource: ds.cloneWithRows(dummyAuditions),
-      auditions: dummyAuditions,
+      dataSource: ds.cloneWithRows(dummysubmissions),
+      submissions: dummysubmissions,
       status: "",
       clicked: 'none'
     };
@@ -84,34 +84,28 @@ const ProjectScheduleView = React.createClass({
   _renderHeader: function() {
     return (
       <View style = { Styles.headerContainer }>
-        <Text style = { Styles.header }>
-          Michael Bay
-        </Text>
+        <Text style = { Styles.header }>Michael Bay</Text>
         <Icon name = "phone" size = { 30 } />
       </View>
     )
   },
 
-  _renderRow: function(audition) {
+  _renderRow: function(submission) {
     return (
-      <View style = { audition.selected ? Styles.auditionItemSelected : Styles.auditionItem }>
-        <View style = { Styles.auditionItemLeft }>
-          <TouchableHighlight onPress = { () => this.onItemSelected(audition.id) }>
-            <View style = { Styles.auditionItemSelect }>
-              <Text>
-                { audition.actor } - { audition.role }
-              </Text>
-              <Text>
-                { audition.date } - { audition.time }
-              </Text>
+      <View style = { submission.selected ? Styles.submissionItemSelected : Styles.submissionItem }>
+        <View style = { Styles.submissionItemLeft }>
+          <TouchableHighlight onPress = { () => this.onItemSelected(submission.id) }>
+            <View style = { Styles.submissionItemSelect }>
+              <Text>{ submission.actor } - { submission.role }</Text>
+              <Text>{ submission.date } - { submission.time }</Text>
             </View>
           </TouchableHighlight>
         </View>
-        <View style = { Styles.auditionItemRight }>
+        <View style = { Styles.submissionItemRight }>
           <Icon name = "phone" size = { 30 } />
           <Icon name = "file-text-o" size = { 30 } />
-          <View style ={ audition.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
-            <Text>{ audition.status }</Text>
+          <View style ={ submission.status == "Yes" ? Styles.yesResponse : Styles.noResponse }>
+            <Text>{ submission.status }</Text>
           </View>
         </View>
       </View>
@@ -127,19 +121,19 @@ const ProjectScheduleView = React.createClass({
   onItemSelected: function(id) {
     console.log("onItemSelected");
 
-    const auditions = _.map(_.cloneDeep(this.state.auditions), (audition) => {
-      if (audition.id == id && audition.selected == false) {
-        audition.selected = true;
-      } else if (audition.id == id && audition.selected == true) {
-        audition.selected = false;
+    const submissions = _.map(_.cloneDeep(this.state.submissions), (submission) => {
+      if (submission.id == id && submission.selected == false) {
+        submission.selected = true;
+      } else if (submission.id == id && submission.selected == true) {
+        submission.selected = false;
       }
 
-      return audition;
+      return submission;
     });
 
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(auditions),
-      auditions: auditions
+      dataSource: this.state.dataSource.cloneWithRows(submissions),
+      submissions: submissions
     });
   },
 

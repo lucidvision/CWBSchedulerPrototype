@@ -10,11 +10,11 @@ const {
   NavigatorIOS
 } = React;
 
-const AuditionScheduleView   = require('./src/views/screens/AuditionScheduleView');
-const LoginView           = require('./src/views/screens/LoginView');
-const ProjectScheduleView   = require('./src/views/screens/ProjectScheduleView');
-const ProjectListView     = require('./src/views/screens/ProjectListView');
-const SettingsView        = require('./src/views/screens/SettingsView');
+const AuditionScheduleView = require('./src/views/screens/AuditionScheduleView');
+const LoginView            = require('./src/views/screens/LoginView');
+const ProjectScheduleView  = require('./src/views/screens/ProjectScheduleView');
+const ProjectListView      = require('./src/views/screens/ProjectListView');
+const SettingsView         = require('./src/views/screens/SettingsView');
 
 const Styles = require('./src/assets/Styles');
 

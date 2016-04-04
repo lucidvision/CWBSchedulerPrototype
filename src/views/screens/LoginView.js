@@ -15,7 +15,8 @@ const LoginView = React.createClass({
   getInitialState: function() {
     return {
       username: "brianpark@cwb.com",
-      password: "password"
+      password: "password",
+      type: "agent"
     }
   },
 
@@ -46,13 +47,23 @@ const LoginView = React.createClass({
     console.log("login pressed");
 
     let main = this.props.main;
-    main.navTo("ProjectList", {}, {
-      title: "Settings",
-      onPress: function() {
-        console.log("onRightButtonPressed");
-        main.navTo("Settings");
-      }
-    });
+    if (this.state.type == "agent") {
+      main.navTo("ProjectList", {}, {
+        title: "Settings",
+        onPress: function() {
+          console.log("onRightButtonPressed");
+          main.navTo("Settings");
+        }
+      });
+    } else if (this.state.type = "actor") {
+      main.navTo("ActorSchedule", {}, {
+        title: "Settings",
+        onPress: function() {
+          console.log("onRightButtonPressed");
+          main.navTo("Settings");
+        }
+      });
+    }
   }
 });
 

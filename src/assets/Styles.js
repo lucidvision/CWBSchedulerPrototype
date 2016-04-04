@@ -3,18 +3,18 @@ const { StyleSheet } = React;
 
 const Styles = StyleSheet.create({
   navigationContainer: {
-    flex: 1
+    flex: 1,
   },
 
   centeredContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 20
+    paddingTop: 20,
   },
 
   screenContainer: {
-    flex: 1
+    flex: 1,
   },
 
   headerContainer: {
@@ -28,7 +28,7 @@ const Styles = StyleSheet.create({
   },
 
   header: {
-    fontSize: 25
+    fontSize: 25,
   },
 
   button: {
@@ -37,16 +37,16 @@ const Styles = StyleSheet.create({
     padding: 12,
     paddingLeft: 20,
     paddingRight: 20,
-    fontSize: 18
+    fontSize: 18,
   },
 
   phone: {
-    paddingLeft: 20
+    paddingLeft: 20,
   },
 
   logo: {
     width: 100,
-    height: 100
+    height: 100,
   },
 
   separator: {
@@ -59,7 +59,7 @@ const Styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 2,
     margin: 10,
-    padding: 5
+    padding: 5,
   },
 
   passwordInput: {
@@ -67,7 +67,7 @@ const Styles = StyleSheet.create({
     borderColor: 'gray',
     height: 40,
     margin: 10,
-    padding: 5
+    padding: 5,
   },
 
   projectListItem: {
@@ -80,49 +80,49 @@ const Styles = StyleSheet.create({
 
   projectListItemLeft: {
     flex: 0.6,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   projectListItemRight: {
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 35
+    height: 35,
   },
 
   projectListItemRoles: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
 
   projectListFont: {
-    fontSize: 15
+    fontSize: 15,
   },
 
   activeActions: {
     backgroundColor: '#55FCFF',
     borderStyle: 'solid',
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   inactiveActions: {
     backgroundColor: 'white',
     borderStyle: 'solid',
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
-  auditionItem: {
+  submissionItem: {
     flex: 1,
     flexDirection: 'row',
     height: 100,
     padding: 10,
     backgroundColor: '#F6F6F6',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
-  auditionItemSelected: {
+  submissionItemSelected: {
     flex: 1,
     flexDirection: 'row',
     height: 100,
@@ -131,23 +131,23 @@ const Styles = StyleSheet.create({
     borderTopWidth: 0,
     borderBottomWidth: 1,
     justifyContent: 'space-between',
-    backgroundColor: '#00FFFF'
+    backgroundColor: '#00FFFF',
   },
 
-  auditionItemLeft: {
+  submissionItemLeft: {
     flex: 0.6,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
-  auditionItemRight: {
+  submissionItemRight: {
     flex: 0.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 35
+    height: 35,
   },
 
-  auditionItemSelect: {
-    flex: 1
+  submissionItemSelect: {
+    flex: 1,
   },
 
   yesResponse: {
@@ -156,7 +156,7 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     width: 60,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   noResponse: {
@@ -165,8 +165,39 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     width: 60,
-    alignItems: 'center'
+    alignItems: 'center',
   },
+
+  auditionItem: {
+    flex: 1,
+    flexDirection: 'column',
+    height: 180,
+    padding: 10,
+    backgroundColor: '#F6F6F6',
+    justifyContent: 'space-between',
+  },
+
+  auditionItemTop: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+
+  auditionItemLeft: {
+    flex: 0.7,
+    flexDirection: 'column',
+  },
+
+  auditionItemRight: {
+    flex: 0.3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  auditionItemBottom: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });
 
 module.exports = Styles;
