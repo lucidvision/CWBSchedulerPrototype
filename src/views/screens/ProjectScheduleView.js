@@ -2,6 +2,8 @@ const _             = require('lodash');
 const React         = require('react-native');
 const Icon          = require('react-native-vector-icons/FontAwesome');
 const NavigationBar = require('react-native-navbar');
+const ActionSheet   = require('@remobile/react-native-action-sheet');
+const Button        = require('@remobile/react-native-simple-button');
 const {
   AppRegistry,
   StyleSheet,
@@ -11,6 +13,7 @@ const {
   UIManager,
   ActionSheetIOS,
   TouchableHighlight,
+  TouchableOpacity,
 } = React;
 
 const Styles = require('../../assets/Styles');
@@ -45,17 +48,6 @@ const dummysubmissions = [
   }
 ];
 
-var BUTTONS = [
-  'Forward to actor',
-  'Forward to casting',
-  'Set status to "Yes"',
-  'Set status to "No"',
-  'Set status to "Wait"',
-  'Cancel'
-];
-
-var CANCEL_INDEX = 5;
-
 const ProjectScheduleView = React.createClass({
   getInitialState: function () {
     var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -64,7 +56,8 @@ const ProjectScheduleView = React.createClass({
       dataSource: ds.cloneWithRows(dummysubmissions),
       submissions: dummysubmissions,
       status: "",
-      clicked: 'none'
+      clicked: 'none',
+      show: false
     };
   },
 
@@ -84,9 +77,13 @@ const ProjectScheduleView = React.createClass({
           renderHeader    = { this._renderHeader }
           renderRow       = { this._renderRow }
           renderSeparator = { this._renderSeperator } />
-        <Text onPress = { this.showActionSheet } style = { Styles.button }>
-          Actions
-        </Text>
+        <Button onPress = { this.onOpen } style={ Styles.actionSheetButton }>Action</Button>
+        <ActionSheet
+          visible  = { this.state.show }
+          onCancel = { this.onCancel }>
+          <ActionSheet.Button>Forward to actor</ActionSheet.Button>
+          <ActionSheet.Button>Forward to casting</ActionSheet.Button>
+        </ActionSheet>
       </View>
     );
   },
@@ -147,14 +144,12 @@ const ProjectScheduleView = React.createClass({
     });
   },
 
-  showActionSheet() {
-    ActionSheetIOS.showActionSheetWithOptions({
-      options: BUTTONS,
-      cancelButtonIndex: CANCEL_INDEX,
-    },
-    (buttonIndex) => {
-      this.setState({ clicked: BUTTONS[buttonIndex] });
-    });
+  onCancel() {
+    this.setState({ show:false });
+  },
+
+  onOpen() {
+    this.setState({ show:true });
   },
 });
 

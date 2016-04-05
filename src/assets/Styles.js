@@ -27,6 +27,11 @@ const Styles = StyleSheet.create({
     borderColor: '#CCCCCC',
   },
 
+  actionSheetButton: {
+    backgroundColor: '#F6F6F6',
+    padding: 10,
+  },
+
   header: {
     fontSize: 25,
   },

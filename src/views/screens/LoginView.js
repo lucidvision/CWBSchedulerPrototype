@@ -18,7 +18,7 @@ const LoginView = React.createClass({
     return {
       username: "brianpark@cwb.com",
       password: "password",
-      type: "actor"
+      type: "agent"
     }
   },
 

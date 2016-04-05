@@ -1,6 +1,6 @@
 const React = require('react-native');
 const { AppRegistry } = React;
-const App = require('./app');
+const App = require('./App');
 
 const CWBScheduler = React.createClass({
   render: function () {
