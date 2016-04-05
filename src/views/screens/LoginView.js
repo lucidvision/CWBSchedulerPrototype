@@ -9,14 +9,16 @@ const {
   TouchableHighlight
 } = React;
 
-const Styles = require('../../assets/Styles');
+const Styles               = require('../../assets/Styles');
+const ProjectListView      = require('./ProjectListView');
+const AuditionScheduleView = require('./AuditionScheduleView');
 
 const LoginView = React.createClass({
   getInitialState: function() {
     return {
       username: "brianpark@cwb.com",
       password: "password",
-      type: "agent"
+      type: "actor"
     }
   },
 
@@ -35,33 +37,22 @@ const LoginView = React.createClass({
           value        = { this.state.password }
           onChangeText = { (password) => this.setState({ password }) } />
         <TouchableHighlight onPress = { () => this.onLoginPressed() }>
-          <Text style = { Styles.button }>
-            Go!
-          </Text>
+          <Text style = { Styles.button }>Go!</Text>
         </TouchableHighlight>
       </View>
     );
   },
 
-  onLoginPressed: async function(event) {
+  onLoginPressed: function(event) {
     console.log("login pressed");
 
-    let main = this.props.main;
     if (this.state.type == "agent") {
-      main.navTo("ProjectList", {}, {
-        title: "Settings",
-        onPress: function() {
-          console.log("onRightButtonPressed");
-          main.navTo("Settings");
-        }
+      this.props.navigator.push({
+        component: ProjectListView
       });
     } else if (this.state.type = "actor") {
-      main.navTo("ActorSchedule", {}, {
-        title: "Settings",
-        onPress: function() {
-          console.log("onRightButtonPressed");
-          main.navTo("Settings");
-        }
+      this.props.navigator.push({
+        component: AuditionScheduleView
       });
     }
   }

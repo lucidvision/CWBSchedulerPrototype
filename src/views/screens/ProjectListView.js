@@ -1,7 +1,7 @@
-const _     = require('lodash');
-const React = require('react-native');
-const Icon   = require('react-native-vector-icons/FontAwesome');
-const Styles = require('../../assets/Styles');
+const _             = require('lodash');
+const React         = require('react-native');
+const Icon          = require('react-native-vector-icons/FontAwesome');
+const NavigationBar = require('react-native-navbar');
 const {
   AppRegistry,
   StyleSheet,
@@ -10,6 +10,10 @@ const {
   View,
   TouchableHighlight
 } = React;
+
+const Styles              = require('../../assets/Styles');
+const SettingsView        = require('./SettingsView');
+const ProjectScheduleView = require('./ProjectScheduleView');
 
 const dummyProjects = [
   {
@@ -41,8 +45,18 @@ const ProjectListView = React.createClass({
   },
 
   render: function () {
+    const rightButtonConfig = {
+      title: 'Settings',
+      handler: () => this.props.navigator.push({
+        component: SettingsView,
+      }),
+    };
+
     return (
       <View style = { Styles.screenContainer }>
+        <NavigationBar
+          title = { { title: "Projects" } }
+          rightButton = { rightButtonConfig } />
         <ListView
           dataSource = { this.state.dataSource }
           renderRow  = { this._renderRow }
@@ -89,7 +103,10 @@ const ProjectListView = React.createClass({
   onProjectSelected: async function (event) {
     console.log("onProjectSelected");
 
-    this.props.main.navTo("ProjectSchedule");
+    this.props.navigator.push({
+      name: 'Project Schedule',
+      component: ProjectScheduleView,
+    })
   },
 });
 

@@ -1,4 +1,5 @@
-const React = require('react-native');
+const React  = require('react-native');
+const Styles = require('./src/assets/Styles');
 
 const {
   Alert,
@@ -6,58 +7,21 @@ const {
   StyleSheet,
   Text,
   View,
-  Navigator,
-  NavigatorIOS
+  Navigator
 } = React;
 
-const AuditionScheduleView = require('./src/views/screens/AuditionScheduleView');
-const LoginView            = require('./src/views/screens/LoginView');
-const ProjectScheduleView  = require('./src/views/screens/ProjectScheduleView');
-const ProjectListView      = require('./src/views/screens/ProjectListView');
-const SettingsView         = require('./src/views/screens/SettingsView');
-
-const Styles = require('./src/assets/Styles');
+const LoginView = require('./src/views/screens/LoginView');
 
 const App = React.createClass({
-  routingTable: {
-    'ActorSchedule': { title: "Actor Schedule", component: AuditionScheduleView },
-    'Login': { title: "Login", component: LoginView },
-    'ProjectList': { title: "Projects", component: ProjectListView },
-    'ProjectSchedule': { title: "Project Schedule", component: ProjectScheduleView },
-    'Settings': { title: "Settings", component: SettingsView }
-  },
-
-  navTo: function(destinationName, props, rightButton, leftButton) {
-    let item = this.routingTable[destinationName];
-    if (props) {
-			props.main = this;
-			item.passProps = props;
-		} else {
-			item.passProps = {
-				main: this,
-			};
-		}
-    if (rightButton) {
-      item.rightButtonTitle = rightButton.title;
-      item.onRightButtonPress = rightButton.onPress;
-    }
-    if (leftButton) {
-      item.leftButtonTitle = leftButton.title;
-      item.onLeftButtonPress = leftButton.onPress;
-    }
-    this.refs.nav.push(item);
-  },
-
-  render: function() {
+  render: function () {
     return (
-      <NavigatorIOS
+      <Navigator
         style = { Styles.navigationContainer }
-        ref   = "nav"
-        initialRoute = { {
-          title: 'Login',
-          component: LoginView,
-          passProps: { main: this },
-        } } />
+        initialRoute = { { component: LoginView } }
+        renderScene = { (route, navigator) => {
+          return <route.component route = { route } navigator = { navigator } />
+        } }
+      />
     );
   }
 });

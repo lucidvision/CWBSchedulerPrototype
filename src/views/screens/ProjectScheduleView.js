@@ -1,7 +1,7 @@
-const _                = require('lodash');
-const React            = require('react-native');
-const Icon             = require('react-native-vector-icons/FontAwesome');
-const Styles           = require('../../assets/Styles');
+const _             = require('lodash');
+const React         = require('react-native');
+const Icon          = require('react-native-vector-icons/FontAwesome');
+const NavigationBar = require('react-native-navbar');
 const {
   AppRegistry,
   StyleSheet,
@@ -12,6 +12,8 @@ const {
   ActionSheetIOS,
   TouchableHighlight,
 } = React;
+
+const Styles = require('../../assets/Styles');
 
 const dummysubmissions = [
   {
@@ -67,8 +69,16 @@ const ProjectScheduleView = React.createClass({
   },
 
   render: function () {
+    const leftButton = {
+      title: 'Projects',
+      handler: () => this.props.navigator.pop(),
+    };
+
     return (
       <View style = { Styles.screenContainer }>
+        <NavigationBar
+          title      = { { title: "Project Schedule" } }
+          leftButton = { leftButton } />
         <ListView
           dataSource      = { this.state.dataSource }
           renderHeader    = { this._renderHeader }
