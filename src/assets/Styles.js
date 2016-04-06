@@ -90,6 +90,7 @@ const Styles = StyleSheet.create({
 
   projectListItem: {
     flex: 1,
+    flexDirection: 'row',
     height: 100,
     padding: 10,
     backgroundColor: '#F6F6F6',
