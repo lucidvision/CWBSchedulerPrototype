@@ -75,9 +75,21 @@ const Styles = StyleSheet.create({
     padding: 5,
   },
 
-  projectListItem: {
+  settingItem: {
     flex: 1,
     flexDirection: 'row',
+    height: 100,
+    padding: 10,
+    backgroundColor: '#F6F6F6',
+  },
+
+  settingItemText: {
+    fontSize: 30,
+    alignSelf: 'center',
+  },
+
+  projectListItem: {
+    flex: 1,
     height: 100,
     padding: 10,
     backgroundColor: '#F6F6F6',
