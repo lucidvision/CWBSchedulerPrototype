@@ -80,8 +80,9 @@ const AuditionScheduleView = React.createClass({
       <View style = { Styles.auditionItem }>
         <View style = { Styles.auditionItemTop }>
           <View style = { Styles.auditionItemLeft }>
-            <Text>{ audition.role } - { audition.agent }</Text>
-            <Text>{ audition.date } - { audition.time }</Text>
+            <Text style = { Styles.highlightedFont }>{ audition.role }</Text>
+            <Text style = { Styles.normalFont }>{ audition.agent }</Text>
+            <Text style = { Styles.normalFont }>{ audition.date } - { audition.time }</Text>
           </View>
           <View style = { Styles.auditionItemRight }>
             <Icon name = "phone" size = { 30 } />

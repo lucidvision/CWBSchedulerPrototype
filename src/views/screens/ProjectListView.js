@@ -69,15 +69,18 @@ const ProjectListView = React.createClass({
     return (
       <View style = { Styles.projectListItem }>
         <View style = { Styles.projectListItemLeft }>
-          <Text style = { Styles.projectListFont }>
-            { project.name } - { project.director }
+          <Text style = { Styles.highlightedFont }>
+            { project.name }
+          </Text>
+          <Text>
+            { project.director }
           </Text>
           <View style = { Styles.projectListItemRoles }>
             { _.map(project.roles, (role, index) => {
               if (index == project.roles.length-1)
-                return <Text key = { index } style = { Styles.projectListFont }>{ role }</Text>
+                return <Text key = { index } style = { Styles.normalFont }>{ role }</Text>
               else
-                return <Text key = { index } style = { Styles.projectListFont }>{ role }, </Text>
+                return <Text key = { index } style = { Styles.normalFont }>{ role }, </Text>
             }) }
           </View>
         </View>

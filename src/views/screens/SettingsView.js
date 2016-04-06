@@ -1,6 +1,6 @@
 const React         = require('react-native');
 const NavigationBar = require('react-native-navbar');
-
+const Button        = require('@remobile/react-native-simple-button');
 const {
   Image,
   ListView,
@@ -25,9 +25,9 @@ const SettingsView = React.createClass({
         <NavigationBar
           title      = { { title: 'Settings' } }
           leftButton = { leftButtonConfig } />
-        <TouchableHighlight onPress = { () => this.onLogoutPressed() }>
+        <Button onPress = { () => this.onLogoutPressed() }>
           <Text style = { Styles.button }>Logout</Text>
-        </TouchableHighlight>
+        </Button>
       </View>
     );
   },

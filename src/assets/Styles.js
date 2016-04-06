@@ -84,15 +84,16 @@ const Styles = StyleSheet.create({
   },
 
   projectListItemLeft: {
-    flex: 0.6,
+    flex: 0.5,
     flexDirection: 'column',
   },
 
   projectListItemRight: {
-    flex: 0.4,
+    flex: 0.5,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 35,
+    height: 33,
+    alignSelf: 'center'
   },
 
   projectListItemRoles: {
@@ -100,7 +101,11 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  projectListFont: {
+  highlightedFont: {
+    fontSize: 20,
+  },
+
+  normalFont: {
     fontSize: 15,
   },
 
@@ -140,15 +145,16 @@ const Styles = StyleSheet.create({
   },
 
   submissionItemLeft: {
-    flex: 0.6,
+    flex: 0.5,
     flexDirection: 'column',
   },
 
   submissionItemRight: {
-    flex: 0.4,
+    flex: 0.5,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: 35,
+    alignSelf: 'center',
+    height: 33,
   },
 
   submissionItemSelect: {
@@ -196,6 +202,7 @@ const Styles = StyleSheet.create({
     flex: 0.3,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignSelf: 'center'
   },
 
   auditionItemBottom: {

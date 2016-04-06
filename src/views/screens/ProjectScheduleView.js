@@ -45,7 +45,7 @@ const dummysubmissions = [
     time: "4:10p",
     status: "Yes",
     selected: false
-  }
+  },
 ];
 
 const ProjectScheduleView = React.createClass({
@@ -103,8 +103,9 @@ const ProjectScheduleView = React.createClass({
         <View style = { Styles.submissionItemLeft }>
           <TouchableHighlight onPress = { () => this.onItemSelected(submission.id) }>
             <View style = { Styles.submissionItemSelect }>
-              <Text>{ submission.actor } - { submission.role }</Text>
-              <Text>{ submission.date } - { submission.time }</Text>
+              <Text style = { Styles.highlightedFont }>{ submission.actor }</Text>
+              <Text style = { Styles.normalFont }>{ submission.role }</Text>
+              <Text style = { Styles.normalFont }>{ submission.date } - { submission.time }</Text>
             </View>
           </TouchableHighlight>
         </View>
